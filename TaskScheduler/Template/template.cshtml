@@ -1,0 +1,114 @@
+﻿
+
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .header-color {
+            height: 3rem;
+            background-color: cornflowerblue;
+        }
+
+        .purple {
+            color: purple;
+        }
+
+        .grey-text {
+            color: grey;
+        }
+
+        .dateDetails {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .inner-flex {
+            float: right;
+            margin-top: 3rem;
+        }
+
+        .body-area {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 14rem;
+        }
+
+        .center-float {
+            text-align: center;
+        }
+
+        .through {
+            text-decoration: line-through;
+        }
+
+        tr {
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-color">
+
+    </div>
+    <div>
+
+    </div>
+
+    <img src="https://www.freepnglogos.com/uploads/company-logo-png/file-mobile-apps-development-company-logo-25.png" width="100" height="100" />
+    
+
+    <div class="body-area">
+        <h1 class="center-float">Employee Report</h1>
+        <table class="table table-striped">
+            <thead class="table-light">
+                <tr>
+                    <th class="head-width">Id</th>
+                    <th class="head-width">FirstName</th>
+                    <th class="head-width">LastName</th>
+                    <th class="head-width">Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var i in Model.Items)
+                    {
+                        <tr>
+                            <td>@i.Description</td>
+                            <td><span class="through">N</span>@i.PricePerUnit.ToString("N2")</td>
+                            <td>@i.Units</td>
+                            <td><span class="through">N</span>@i.TotalCost.ToString("N2")</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+
+        <table class="table table-borderless" style="text-align: ; border: solid 1px white; margin-top: 3rem; width: 350px; float: right;">
+            <tr>
+                <td>Subtotal</td>
+                <td style="text-align: right;"><span class="through">N</span>@Model.SubTotal.ToString("N2")</td>
+            </tr>
+            <tr>
+                <td>Discount</td>
+                <td style="text-align: right;"><span class="through">N</span>@Model.CalculatedWithDiscount.ToString("N2")</td>
+            </tr>
+            <tr>
+                <td>Tax</td>
+                <td style="text-align: right;"><span class="through">N</span>@Model.TaxFees.ToString("N2")</td>
+            </tr>
+            <tr style="border-top: 1px solid black; border-bottom: 1px solid black">
+                <td>Total</td>
+                <td style="text-align: right;"><span class="through">N</span>@Model.AmountDue.ToString("N2")</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
